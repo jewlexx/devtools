@@ -1,4 +1,6 @@
 use yew::prelude::*;
+use yew_octicons::Icon;
+use yew_octicons::IconKind;
 
 #[function_component(Encode)]
 pub fn encode() -> Html {
@@ -40,7 +42,7 @@ pub fn encode() -> Html {
     html! {
         <div class="container">
             <input type="text" label="Input" ref={&*input_ref} oninput={input_changed} />
-            <p>{ &*output } <button>{ "📋" }</button></p>
+            <p class="base64-output">{ &*output } <button class="copy-button"><span>{ Icon::new(IconKind::Copy) }</span></button></p>
         </div>
     }
 }
