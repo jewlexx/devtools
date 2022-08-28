@@ -40,7 +40,7 @@ pub fn encode() -> Html {
     html! {
         <div class="container">
             <input type="text" label="Input" ref={&*input_ref} oninput={input_changed} />
-            <p>{ &*output }</p>
+            <p>{ &*output } <button>{ "📋" }</button></p>
         </div>
     }
 }
