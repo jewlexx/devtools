@@ -2,6 +2,8 @@ use yew::prelude::*;
 use yew_octicons::Icon;
 use yew_octicons::IconKind;
 
+use crate::ffi::clip_write;
+
 #[function_component(Encode)]
 pub fn encode() -> Html {
     let input = use_state(|| "".to_string());
@@ -18,6 +20,14 @@ pub fn encode() -> Html {
                     .unwrap()
                     .value(),
             );
+        })
+    };
+
+    let copy_output = {
+        let output = output.clone();
+
+        Callback::from(move |_| {
+            clip_write(&*output);
         })
     };
 
@@ -42,7 +52,7 @@ pub fn encode() -> Html {
     html! {
         <div class="container">
             <input type="text" label="Input" ref={&*input_ref} oninput={input_changed} />
-            <p class="base64-output">{ &*output } <button class="copy-button"><span>{ Icon::new(IconKind::Copy) }</span></button></p>
+            <p class="base64-output">{ &*output } <button class="copy-button" onclick={copy_output}><span>{ Icon::new(IconKind::Copy) }</span></button></p>
         </div>
     }
 }

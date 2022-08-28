@@ -1,4 +1,3 @@
-use strum::IntoEnumIterator;
 use yew::prelude::*;
 
 #[function_component(Index)]
