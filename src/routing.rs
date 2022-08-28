@@ -5,6 +5,8 @@ use yew_router::prelude::*;
 pub enum Route {
     #[at("/")]
     Index,
+    #[at("/base64encode")]
+    Base64Encode,
     #[not_found]
     #[at("/404")]
     NotFound,

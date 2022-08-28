@@ -11,6 +11,7 @@ pub fn app() -> Html {
             <Switch<Route> render={Switch::render(|routes| {
                     match routes {
                         Route::Index => html! { <Index /> },
+                        Route::Base64Encode => html! { <crate::tools::base64encode::Encode /> },
                         Route::NotFound => html! { <p>{"404"}</p> },
                     }
             })} />
