@@ -19,11 +19,11 @@ struct GreetArgs<'a> {
 
 #[function_component(App)]
 pub fn app() -> Html {
-    let greet_input_ref = use_ref(|| NodeRef::default());
+    let greet_input_ref = use_ref(NodeRef::default);
 
-    let name = use_state(|| String::new());
+    let name = use_state(String::new);
 
-    let greet_msg = use_state(|| String::new());
+    let greet_msg = use_state(String::new);
     {
         let greet_msg = greet_msg.clone();
         let name = name.clone();
@@ -51,7 +51,6 @@ pub fn app() -> Html {
     }
 
     let greet = {
-        let name = name.clone();
         let greet_input_ref = greet_input_ref.clone();
         Callback::from(move |_| {
             name.set(
