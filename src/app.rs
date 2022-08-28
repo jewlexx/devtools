@@ -54,7 +54,12 @@ pub fn app() -> Html {
         let name = name.clone();
         let greet_input_ref = greet_input_ref.clone();
         Callback::from(move |_| {
-            name.set(greet_input_ref.cast::<web_sys::HtmlInputElement>().unwrap().value());
+            name.set(
+                greet_input_ref
+                    .cast::<web_sys::HtmlInputElement>()
+                    .unwrap()
+                    .value(),
+            );
         })
     };
 
