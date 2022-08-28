@@ -1,6 +1,7 @@
+use strum::EnumIter;
 use yew_router::prelude::*;
 
-#[derive(Clone, Routable, PartialEq, Eq)]
+#[derive(Clone, Routable, PartialEq, Eq, EnumIter)]
 pub enum Route {
     #[at("/")]
     Index,
