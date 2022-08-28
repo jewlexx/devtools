@@ -8,6 +8,6 @@ extern "C" {
     #[wasm_bindgen(js_namespace = console)]
     pub fn log(s: &str);
 
-    #[wasm_bindgen(js_name = "writeText", js_namespace = ["navigator", "clipboard"])]
+    #[wasm_bindgen(js_name = "writeText", js_namespace = ["window", "__TAURI__", "clipboard"])]
     pub fn clip_write(s: &str);
 }
