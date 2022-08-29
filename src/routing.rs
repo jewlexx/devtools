@@ -1,14 +1,14 @@
-use strum::EnumIter;
+use yew::prelude::*;
 use yew_router::prelude::*;
 
-pub struct AppRoute<T: yew::FunctionProvider + 'static> {
+pub struct AppRoute {
     pub route: Route,
     pub title: &'static str,
     pub description: &'static str,
-    pub component: yew::functional::FunctionComponent<T>,
+    pub component: fn() -> Html,
 }
 
-#[derive(Clone, Routable, PartialEq, Eq, EnumIter)]
+#[derive(Clone, Routable, PartialEq, Eq)]
 pub enum Route {
     #[at("/")]
     Index,
@@ -19,6 +19,27 @@ pub enum Route {
     NotFound,
 }
 
-impl<T: yew::FunctionProvider + 'static> From<Route> for AppRoute<T> {
-    fn from(route: Route) -> Self {}
+impl From<Route> for AppRoute {
+    fn from(route: Route) -> Self {
+        match route {
+            Route::Index => AppRoute {
+                route,
+                title: "Home",
+                description: "Home page",
+                component: || html! { <crate::index::Index/> },
+            },
+            Route::Base64Encode => AppRoute {
+                route,
+                title: "Base64 Encode",
+                description: "Base64 Encode page",
+                component: || html! { <crate::tools::base64encode::Encode/> },
+            },
+            Route::NotFound => AppRoute {
+                route,
+                title: "404",
+                description: "404 page",
+                component: || html! { <crate::not_found::NotFound/> },
+            },
+        }
+    }
 }
