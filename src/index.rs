@@ -40,10 +40,12 @@ pub fn index() -> Html {
     html! {
         <main class="container">
             <h1>{ "The developer's best friend" }</h1>
-            <Card elevation={Elevation::Level2}>
-                <h1>{&routes[0].route.title}</h1>
-                <p>{&routes[0].route.description}</p>
-            </Card>
+            <a href="/base64encode" style="text-decoration: none" class="card-link">
+                <Card elevation={Elevation::Level2}>
+                    <h1>{&routes[0].route.title}</h1>
+                    <p>{&routes[0].route.description}</p>
+                </Card>
+            </a>
         </main>
     }
 }
