@@ -1,4 +1,4 @@
-use crate::index::Index;
+use crate::routing::*;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
@@ -8,12 +8,10 @@ use crate::routing::Route;
 pub fn app() -> Html {
     html! {
         <BrowserRouter>
-            <Switch<Route> render={Switch::render(|routes| {
-                    match routes {
-                        Route::Index => html! { <Index /> },
-                        Route::Base64Encode => html! { <crate::tools::base64encode::Encode /> },
-                        Route::NotFound => html! { <p>{"404"}</p> },
-                    }
+            <Switch<Route> render={Switch::render(|route: Route| {
+                let app_route: AppRoute = route.into();
+
+                app_route.component
             })} />
         </BrowserRouter>
     }
