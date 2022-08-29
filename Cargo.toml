@@ -7,7 +7,6 @@ edition = "2021"
 [dependencies]
 base64 = { version = "0.13.0", features = ["alloc"] }
 js-sys = "0.3.59"
-material-yew = { version = "0.2.0", features = ["full"] }
 serde = { version = "1.0.140", features = ["derive"] }
 strum = { version = "0.24.1", features = ["derive"] }
 wasm-bindgen = { version = "0.2.82", features = ["serde-serialize"] }
