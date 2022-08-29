@@ -1,6 +1,8 @@
+use strum::EnumIter;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
+#[derive(Clone, PartialEq, Eq)]
 pub struct AppRoute {
     pub route: Route,
     pub title: &'static str,
@@ -8,7 +10,7 @@ pub struct AppRoute {
     pub component: fn() -> Html,
 }
 
-#[derive(Clone, Copy, Routable, PartialEq, Eq)]
+#[derive(Clone, Copy, Routable, PartialEq, Eq, EnumIter)]
 pub enum Route {
     #[at("/")]
     Index,
