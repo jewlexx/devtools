@@ -579,6 +579,7 @@ version = "0.0.0"
 dependencies = [
  "base64",
  "js-sys",
+ "minifier",
  "serde",
  "strum 0.24.1",
  "wasm-bindgen",
@@ -1734,6 +1735,12 @@ checksum = "5aa361d4faea93603064a027415f07bd8e1d5c88c9fbf68bf56a285428fd79ce"
 dependencies = [
  "autocfg",
 ]
+
+[[package]]
+name = "minifier"
+version = "0.2.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8eb022374af2f446981254e6bf9efb6e2c9e1a53176d395fca02792fd4435729"
 
 [[package]]
 name = "miniz_oxide"

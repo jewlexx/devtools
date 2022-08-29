@@ -22,6 +22,7 @@ yewprint-css = "0.2.1"
 members = ["src-tauri"]
 
 [build-dependencies]
+minifier = "0.2.2"
 yewprint-css = "0.2.1"
 
 [profile.release]
