@@ -23,12 +23,16 @@ fn route_display(props: &RouteProps) -> Html {
 #[function_component(Index)]
 pub fn index() -> Html {
     let routes = {
-        let routes_vec = crate::routing::Route::iter()
+        let mut routes_vec = crate::routing::Route::iter()
             .map(|x| RouteProps {
                 route: x.into(),
                 is_hovered: false,
             })
             .collect::<Vec<_>>();
+
+        // Removes the Home page and the 404 route
+        routes_vec.remove(0);
+        routes_vec.pop();
 
         use_state_eq(move || routes_vec)
     };
