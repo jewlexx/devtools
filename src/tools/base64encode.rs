@@ -1,10 +1,18 @@
 use std::ops::Deref;
+
+use serde::Serialize;
+use wasm_bindgen::JsValue;
 use yew::prelude::*;
-use yew_octicons::Icon;
-use yew_octicons::IconKind;
+use yew_octicons::{Icon, IconKind};
 use yewprint::{Button, InputGroup, Text};
 
-use crate::ffi::clip_write;
+use crate::ffi::{clip_write, invoke};
+
+#[derive(Debug, Clone, Serialize)]
+struct Base64ParseArgs {
+    pub input: String,
+    pub encode: bool,
+}
 
 #[function_component(Encode)]
 pub fn encode() -> Html {
@@ -28,6 +36,34 @@ pub fn encode() -> Html {
             clip_write(&*output);
         })
     };
+
+    {
+        let input = input.clone();
+        let output = output.clone();
+
+        use_effect_with_deps(
+            |input| {
+                let input = input[0].deref().to_owned();
+
+                wasm_bindgen_futures::spawn_local(async move {
+                    let response = invoke(
+                        "base64_parse",
+                        JsValue::from_serde(&Base64ParseArgs {
+                            input,
+                            encode: true,
+                        })
+                        .unwrap(),
+                    )
+                    .await;
+
+                    output.set(response.as_string().unwrap());
+                });
+
+                || {}
+            },
+            [input],
+        );
+    }
 
     html! {
         <div class="container">
