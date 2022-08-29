@@ -10,11 +10,9 @@ use crate::ffi::clip_write;
 pub fn encode() -> Html {
     let input = use_state(|| "".to_string());
     let output = use_state(|| "".to_string());
-    let input_ref = use_ref(NodeRef::default);
 
     let input_changed = {
         let input = input.clone();
-        let input_ref = input_ref.clone();
         Callback::from(move |e: InputEvent| {
             let value = e
                 .target_unchecked_into::<web_sys::HtmlInputElement>()
@@ -30,24 +28,6 @@ pub fn encode() -> Html {
             clip_write(&*output);
         })
     };
-
-    {
-        let input_ref = input.clone();
-        let output = output.clone();
-
-        use_effect_with_deps(
-            move |_| {
-                let input_value = &*input_ref;
-
-                let output_value = base64::encode(input_value);
-
-                output.set(output_value);
-
-                || {}
-            },
-            [input.clone()],
-        );
-    }
 
     html! {
         <div class="container">
