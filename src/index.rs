@@ -22,12 +22,16 @@ fn route_display(props: &RouteProps) -> Html {
 
 #[function_component(Index)]
 pub fn index() -> Html {
-    let routes = crate::routing::Route::iter()
-        .map(|x| RouteProps {
-            route: x.into(),
-            is_hovered: false,
-        })
-        .collect::<Vec<_>>();
+    let routes = {
+        let routes_vec = crate::routing::Route::iter()
+            .map(|x| RouteProps {
+                route: x.into(),
+                is_hovered: false,
+            })
+            .collect::<Vec<_>>();
+
+        use_state_eq(move || routes_vec)
+    };
 
     html! {
         <main class="container">
