@@ -21,3 +21,6 @@ yewprint-css = "0.2.1"
 
 [workspace]
 members = ["src-tauri"]
+
+[build-dependencies]
+yewprint-css = "0.2.1"
