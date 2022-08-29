@@ -1,6 +1,8 @@
+use std::ops::Deref;
 use yew::prelude::*;
 use yew_octicons::Icon;
 use yew_octicons::IconKind;
+use yewprint::InputGroup;
 
 use crate::ffi::clip_write;
 
@@ -13,13 +15,11 @@ pub fn encode() -> Html {
     let input_changed = {
         let input = input.clone();
         let input_ref = input_ref.clone();
-        Callback::from(move |_| {
-            input.set(
-                input_ref
-                    .cast::<web_sys::HtmlInputElement>()
-                    .unwrap()
-                    .value(),
-            );
+        Callback::from(move |e: InputEvent| {
+            let value = e
+                .target_unchecked_into::<web_sys::HtmlInputElement>()
+                .value();
+            input.set(value);
         })
     };
 
@@ -45,13 +45,18 @@ pub fn encode() -> Html {
 
                 || {}
             },
-            [input],
+            [input.clone()],
         );
     }
 
     html! {
         <div class="container">
-            <input type="text" label="Input" ref={&*input_ref} oninput={input_changed} />
+            <InputGroup
+                placeholder={"Enter the text to encode in base64"}
+                value={input.clone().deref().clone()}
+                oninput={input_changed}
+            ></InputGroup>
+            // <input type="text" label="Input" ref={&*input_ref} oninput={input_changed} />
             <p class="base64-output">{ &*output } <button class="copy-button" onclick={copy_output}><span>{ Icon::new(IconKind::Copy) }</span></button></p>
         </div>
     }
