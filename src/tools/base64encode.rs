@@ -53,7 +53,7 @@ pub fn encode() -> Html {
         <div class="container">
             <InputGroup
                 placeholder={"Enter the text to encode in base64"}
-                value={input.clone().deref().clone()}
+                value={input.deref().to_owned()}
                 oninput={input_changed}
             ></InputGroup>
             // <input type="text" label="Input" ref={&*input_ref} oninput={input_changed} />
