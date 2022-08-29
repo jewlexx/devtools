@@ -2,7 +2,7 @@ use std::ops::Deref;
 use yew::prelude::*;
 use yew_octicons::Icon;
 use yew_octicons::IconKind;
-use yewprint::{InputGroup, Text};
+use yewprint::{Button, InputGroup, Text};
 
 use crate::ffi::clip_write;
 
@@ -56,7 +56,8 @@ pub fn encode() -> Html {
                 value={input.deref().to_owned()}
                 oninput={input_changed}
             ></InputGroup>
-            <Text class="base64-output">{ &*output } <button class="copy-button" onclick={copy_output}><span>{ Icon::new(IconKind::Copy) }</span></button></Text>
+            <Text class="base64-output">{ &*output }</Text>
+            <Button class="copy-button" onclick={copy_output}><span>{ Icon::new(IconKind::Copy) }</span></Button>
         </div>
     }
 }
