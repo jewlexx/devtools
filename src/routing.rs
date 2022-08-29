@@ -8,7 +8,7 @@ pub struct AppRoute {
     pub component: fn() -> Html,
 }
 
-#[derive(Clone, Routable, PartialEq, Eq)]
+#[derive(Clone, Copy, Routable, PartialEq, Eq)]
 pub enum Route {
     #[at("/")]
     Index,

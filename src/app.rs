@@ -8,10 +8,10 @@ use crate::routing::Route;
 pub fn app() -> Html {
     html! {
         <BrowserRouter>
-            <Switch<Route> render={Switch::render(|route: Route| {
-                let app_route: AppRoute = route.into();
+            <Switch<Route> render={Switch::render(|route: &Route| {
+                let app_route: AppRoute = (*route).into();
 
-                app_route.component
+                (app_route.component)()
             })} />
         </BrowserRouter>
     }
