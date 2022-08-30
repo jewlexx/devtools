@@ -6,7 +6,7 @@ use stylist::{
     StyleSource,
 };
 use yew::prelude::*;
-use yewprint::{Button, Icon, IconName, InputGroup, Text};
+use yewprint::{Button, Card, Elevation, Icon, IconName, InputGroup, Text};
 
 use crate::{
     ffi::{clip_write, invoke},
@@ -82,7 +82,11 @@ pub fn encode() -> Html {
                     value={input.deref().to_owned()}
                     oninput={input_changed}
                 ></InputGroup>
-                <Text class="output">{ &*output }</Text>
+                <Card class="output" elevation={Elevation::Level2}>
+                    <Text>
+                        { "Encoded Output: " } <code>{ &*output }</code>
+                    </Text>
+                </Card>
                 <Button class="copy-button" onclick={copy_output}><Icon icon={IconName::Clipboard}/></Button>
             </div>
         </>
