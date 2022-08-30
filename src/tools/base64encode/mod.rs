@@ -84,7 +84,11 @@ pub fn encode() -> Html {
                 ></InputGroup>
                 <Card class="output" elevation={Elevation::Level2}>
                     <Text>
-                        { "Encoded Output: " } <code>{ &*output }</code>
+                        { "Encoded Output: " } <code>{ if output.deref().is_empty() {
+                            "Enter the text to encode in base64"
+                        } else {
+                            &*output
+                        } }</code>
                     </Text>
                 </Card>
                 <Button class="copy-button" onclick={copy_output}><Icon icon={IconName::Clipboard}/></Button>
