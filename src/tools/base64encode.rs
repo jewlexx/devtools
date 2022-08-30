@@ -3,8 +3,7 @@ use std::ops::Deref;
 use serde::Serialize;
 use wasm_bindgen::JsValue;
 use yew::prelude::*;
-use yew_octicons::{Icon, IconKind};
-use yewprint::{Button, InputGroup, Text};
+use yewprint::{Button, Icon, IconName, InputGroup, Text};
 
 use crate::ffi::{clip_write, invoke};
 
@@ -73,7 +72,7 @@ pub fn encode() -> Html {
                 oninput={input_changed}
             ></InputGroup>
             <Text class="base64-output">{ &*output }</Text>
-            <Button class="copy-button" onclick={copy_output}><span>{ Icon::new(IconKind::Copy) }</span></Button>
+            <Button class="copy-button" onclick={copy_output}><Icon icon={IconName::Clipboard}/></Button>
         </div>
     }
 }
