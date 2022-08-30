@@ -1,0 +1,17 @@
+.container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.container .input,
+.output,
+.copy-button {
+  margin: 0.5rem;
+}

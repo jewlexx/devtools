@@ -1,6 +1,10 @@
 use std::ops::Deref;
 
 use serde::Serialize;
+use stylist::{
+    yew::{styled_component, Global},
+    StyleSource,
+};
 use yew::prelude::*;
 use yewprint::{Button, Icon, IconName, InputGroup, Text};
 
@@ -15,8 +19,10 @@ struct Base64ParseArgs {
     pub encode: bool,
 }
 
-#[function_component(Encode)]
+#[styled_component(Encode)]
 pub fn encode() -> Html {
+    let class_name: StyleSource = include_str!("mod.css").into();
+
     let input = use_state(|| "".to_string());
     let output = use_state(|| "".to_string());
 
@@ -67,14 +73,18 @@ pub fn encode() -> Html {
     }
 
     html! {
-        <div class="container">
-            <InputGroup
-                placeholder={"Enter the text to encode in base64"}
-                value={input.deref().to_owned()}
-                oninput={input_changed}
-            ></InputGroup>
-            <Text class="base64-output">{ &*output }</Text>
-            <Button class="copy-button" onclick={copy_output}><Icon icon={IconName::Clipboard}/></Button>
-        </div>
+        <>
+            <Global css={class_name}/>
+            <div class="container">
+                <InputGroup
+                    class={"input"}
+                    placeholder={"Enter the text to encode in base64"}
+                    value={input.deref().to_owned()}
+                    oninput={input_changed}
+                ></InputGroup>
+                <Text class="output">{ &*output }</Text>
+                <Button class="copy-button" onclick={copy_output}><Icon icon={IconName::Clipboard}/></Button>
+            </div>
+        </>
     }
 }

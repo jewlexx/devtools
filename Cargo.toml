@@ -8,6 +8,7 @@ edition = "2021"
 js-sys = "0.3.59"
 serde = { version = "1.0.140", features = ["derive"] }
 strum = { version = "0.24.1", features = ["derive"] }
+stylist = { version = "0.10.1", features = ["yew"] }
 wasm-bindgen = { version = "0.2.82", features = ["serde-serialize"] }
 wasm-bindgen-futures = "0.4.32"
 web-sys = "0.3.59"
