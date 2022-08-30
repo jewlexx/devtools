@@ -21,9 +21,9 @@ impl From<u8> for U4 {
         }
 
         let mut inner = [false; 4];
-        for i in 0..4 {
-            inner[i] = val & (1 << i) != 0;
-        }
+        inner.iter_mut().enumerate().for_each(|(i, b)| {
+            *b = (val & (1 << i)) != 0;
+        });
         inner.reverse();
 
         U4 { inner }
