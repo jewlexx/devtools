@@ -70,6 +70,7 @@ mod tests {
     #[test]
     fn test_u4() {
         for i in 0..16 {
+            println!("{}", i);
             let u4 = super::U4::from(i);
             let decimal: u8 = u4.into();
             assert_eq!(i, decimal);
