@@ -64,3 +64,15 @@ impl Add<u8> for U4 {
 fn main() {
     yew::start_app::<App>();
 }
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn test_u4() {
+        for i in 0..16 {
+            let u4 = super::U4::from(i);
+            let decimal: u8 = u4.into();
+            assert_eq!(i, decimal);
+        }
+    }
+}
