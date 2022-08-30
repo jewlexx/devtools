@@ -33,20 +33,10 @@ impl From<u8> for U4 {
 impl From<U4> for u8 {
     fn from(val: U4) -> Self {
         let mut res = 0;
-        if val.inner[0] {
-            res += 8;
-        }
-        if val.inner[1] {
-            res += 4;
-        }
-        if val.inner[2] {
-            res += 2;
-        }
-        if val.inner[3] {
-            res += 1;
-        }
-        for i in (0..4).rev() {
-            if val.inner[i] {
+        let mut reversed = val.inner;
+        reversed.reverse();
+        for (i, val) in reversed.iter().enumerate() {
+            if *val {
                 res += 1 << i;
             }
         }
