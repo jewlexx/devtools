@@ -24,20 +24,32 @@ impl From<u8> for U4 {
         inner.iter_mut().enumerate().for_each(|(i, b)| {
             *b = (val & (1 << i)) != 0;
         });
-        inner.reverse();
 
         U4 { inner }
     }
 }
 
+// TODO: Improve this
 impl From<U4> for u8 {
     fn from(val: U4) -> Self {
         let mut res = 0;
-        for i in 0..4 {
-            if val.inner[i] {
-                res += 1 << i;
-            }
+        if val.inner[0] {
+            res += 8;
         }
+        if val.inner[1] {
+            res += 4;
+        }
+        if val.inner[2] {
+            res += 2;
+        }
+        if val.inner[3] {
+            res += 1;
+        }
+        // for i in 0..4 {
+        //     if val.inner[i] {
+        //         res += 1 << i;
+        //     }
+        // }
         res
     }
 }
