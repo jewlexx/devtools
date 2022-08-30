@@ -1,11 +1,13 @@
 use std::ops::Deref;
 
 use serde::Serialize;
-use wasm_bindgen::JsValue;
 use yew::prelude::*;
 use yewprint::{Button, Icon, IconName, InputGroup, Text};
 
-use crate::ffi::{clip_write, invoke};
+use crate::{
+    ffi::{clip_write, invoke},
+    jsv,
+};
 
 #[derive(Debug, Clone, Serialize)]
 struct Base64ParseArgs {
@@ -47,7 +49,7 @@ pub fn encode() -> Html {
                 wasm_bindgen_futures::spawn_local(async move {
                     let response = invoke(
                         "base64_parse",
-                        JsValue::from_serde(&Base64ParseArgs {
+                        jsv!(Base64ParseArgs {
                             input,
                             encode: true,
                         })
