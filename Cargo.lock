@@ -578,7 +578,6 @@ dependencies = [
 name = "developer-tools-ui"
 version = "0.0.0"
 dependencies = [
- "base64",
  "js-sys",
  "minifier",
  "serde",
