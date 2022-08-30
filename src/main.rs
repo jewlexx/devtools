@@ -45,11 +45,11 @@ impl From<U4> for u8 {
         if val.inner[3] {
             res += 1;
         }
-        // for i in 0..4 {
-        //     if val.inner[i] {
-        //         res += 1 << i;
-        //     }
-        // }
+        for i in (0..4).rev() {
+            if val.inner[i] {
+                res += 1 << i;
+            }
+        }
         res
     }
 }
