@@ -16,10 +16,10 @@ const Base64StringEncode: NextPage = () => {
   }, [input, tauri]);
 
   return (
-    <>
+    <div>
       <input value={input} onChange={(e) => setInput(e.target.value)}></input>
       <p>{output}</p>
-    </>
+    </div>
   );
 };
 
