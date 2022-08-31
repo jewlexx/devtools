@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Link href="/base64-string-encode">Base64 String Encode</Link>
+        <Link href="/tools/base64-string-encode">Base64 String Encode</Link>
       </main>
 
       <footer className={styles.footer}>
