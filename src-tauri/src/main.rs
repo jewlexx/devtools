@@ -3,6 +3,8 @@
     windows_subsystem = "windows"
 )]
 
+use parking_lot::Mutex;
+
 enum ColorModeTypes {
     Dark,
     Light,
@@ -19,6 +21,8 @@ impl From<dark_light::Mode> for ColorModeTypes {
 
 struct ColorMode(pub ColorModeTypes);
 
+static COLOR_MODE: Mutex<ColorMode> = Mutex::new(ColorMode(ColorModeTypes::Dark));
+
 #[tauri::command]
 fn base64_parse(input: &str, encode: bool) -> String {
     if encode {
@@ -29,8 +33,10 @@ fn base64_parse(input: &str, encode: bool) -> String {
 }
 
 fn main() {
+    *COLOR_MODE.lock() = ColorMode(dark_light::detect().into());
+
     tauri::Builder::default()
-        .manage(ColorMode(dark_light::detect().into()))
+        .manage(*COLOR_MODE.lock())
         .invoke_handler(tauri::generate_handler![base64_parse])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
