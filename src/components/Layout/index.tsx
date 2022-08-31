@@ -1,5 +1,5 @@
 import type { FunctionComponent, ReactNode } from 'react';
-import styles from './index.scss';
+import styles from './index.module.scss';
 
 const Layout: FunctionComponent<{
   children: ReactNode;
