@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "next dev",
+    "build": "tauri build",
+    "dev": "tauri dev",
     "lint": "next lint",
-    "start": "next start"
+    "next:build": "next build",
+    "next:dev": "next dev",
+    "next:start": "next start"
   },
   "dependencies": {
     "@tauri-apps/api": "^1.0.2",
