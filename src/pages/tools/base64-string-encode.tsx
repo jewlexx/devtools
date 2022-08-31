@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import useTauri from '../../lib/usetauri';
 import type { NextPage } from 'next';
+import Layout from '../../components/Layout';
+import useTauri from '../../lib/usetauri';
 
 const Base64StringEncode: NextPage = () => {
   const [input, setInput] = useState('');
