@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { invoke } from '@tauri-apps/api';
 import type { NextPage } from 'next';
 
 const Base64StringEncode: NextPage = () => {
@@ -7,17 +6,22 @@ const Base64StringEncode: NextPage = () => {
   const [output, setOutput] = useState('');
 
   useEffect(() => {
-    invoke('base64_parse', {
-      input,
-      encode: true,
-    }).then((result) => {
-      setOutput(result as string);
+    import('@tauri-apps/api').then(({ invoke }) => {
+      invoke('base64_parse', {
+        input,
+        encode: true,
+      }).then((result) => {
+        setOutput(result as string);
+      });
     });
   }, [input]);
 
   return (
     <>
+      <input value={input} onChange={(e) => setInput(e.target.value)}></input>
       <p>{output}</p>
     </>
   );
 };
+
+export default Base64StringEncode;
