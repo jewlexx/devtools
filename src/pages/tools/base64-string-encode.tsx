@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
+import useTauri from '../../lib/usetauri';
 import type { NextPage } from 'next';
 
 const Base64StringEncode: NextPage = () => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
+  const tauri = useTauri();
 
   useEffect(() => {
     import('@tauri-apps/api').then(({ invoke }) => {
