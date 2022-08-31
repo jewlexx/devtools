@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
+import { InputGroup } from '@blueprintjs/core';
 import Layout from '../../components/Layout';
 import useTauri from '../../lib/usetauri';
 
@@ -18,7 +19,11 @@ const Base64StringEncode: NextPage = () => {
 
   return (
     <Layout>
-      <input value={input} onChange={(e) => setInput(e.target.value)}></input>
+      <InputGroup
+        placeholder="Enter the string to be encoded in base64"
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
       <p>{output}</p>
     </Layout>
   );
