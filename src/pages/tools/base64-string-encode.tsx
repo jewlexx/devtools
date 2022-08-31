@@ -8,15 +8,12 @@ const Base64StringEncode: NextPage = () => {
   const tauri = useTauri();
 
   useEffect(() => {
-    import('@tauri-apps/api').then(({ invoke }) => {
-      invoke('base64_parse', {
-        input,
-        encode: true,
-      }).then((result) => {
-        setOutput(result as string);
+    if (tauri !== null) {
+      tauri.invoke('base64_parse', { input, encode: true }).then((res) => {
+        setOutput(res as string);
       });
-    });
-  }, [input]);
+    }
+  }, [input, tauri]);
 
   return (
     <>
