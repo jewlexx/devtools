@@ -1,7 +1,9 @@
-import type { FunctionComponent } from 'react';
+import type { FunctionComponent, ReactNode } from 'react';
 import styles from './index.scss';
 
-const Layout: FunctionComponent = ({ children }) => {
+const Layout: FunctionComponent<{
+  children: ReactNode;
+}> = ({ children }) => {
   return <>{children}</>;
 };
 
