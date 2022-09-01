@@ -60,15 +60,14 @@ interface Props {
 export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const fs = await import('fs/promises');
   const path = await import('path');
-  const filename = __filename;
 
-  const toolsPath = path.join(path.dirname(filename), 'tools');
+  const toolsPath = process.cwd() + '/src/pages/tools';
 
   const toolsDir = await fs.readdir(toolsPath);
 
   const toolsImports = await Promise.all(
     toolsDir.map((p) => {
-      return import(p) as Promise<Tool>;
+      return import('./tools/' + p) as Promise<Tool>;
     }),
   );
 
