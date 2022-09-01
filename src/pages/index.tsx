@@ -43,14 +43,16 @@ const Home: NextPage<Props> = ({ tools }) => {
   );
 };
 
-interface Props {
-  tools: {
-    title: string;
-    description: string;
-  }[];
+interface Tool {
+  title: string;
+  description: string;
 }
 
-export const getStaticProps: GetStaticProps<Props[]> = async (context) => {
+interface Props {
+  tools: Tool[];
+}
+
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const fs = await import('fs/promises');
   const path = await import('path');
   const filename = __filename;
@@ -61,7 +63,7 @@ export const getStaticProps: GetStaticProps<Props[]> = async (context) => {
 
   const toolsImports = await Promise.all(
     toolsDir.map((p) => {
-      return import(p) as Promise<Props>;
+      return import(p) as Promise<Tool>;
     }),
   );
 
