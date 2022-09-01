@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css';
 import { Card, Elevation } from '@blueprintjs/core';
 
 const Home: NextPage<Props> = ({ tools }) => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(-1);
 
   return (
     <div className={styles.container}>
@@ -18,13 +18,17 @@ const Home: NextPage<Props> = ({ tools }) => {
       </Head>
 
       <main className={styles.main}>
-        <Card
-          elevation={isHovered ? Elevation.TWO : Elevation.ZERO}
-          onMouseOver={() => setIsHovered(true)}
-          onMouseOut={() => setIsHovered(false)}
-        >
-          <Link href="/tools/base64-string-encode">Base64 String Encode</Link>
-        </Card>
+        {tools.map((tool, i) => (
+          <Link href={tool.url} key={JSON.stringify({ ...tool, i })}>
+            <Card
+              elevation={isHovered === i ? Elevation.TWO : Elevation.ZERO}
+              onMouseOver={() => setIsHovered(i)}
+              onMouseOut={() => setIsHovered(-1)}
+            >
+              Base64 String Encode
+            </Card>
+          </Link>
+        ))}
       </main>
 
       <footer className={styles.footer}>
