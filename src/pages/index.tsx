@@ -46,6 +46,7 @@ const Home: NextPage<Props> = ({ tools }) => {
 interface Tool {
   title: string;
   description: string;
+  url: string;
 }
 
 interface Props {

@@ -33,4 +33,9 @@ export const title = 'Base64 String Encode';
 
 export const description = 'Encode a string in base64';
 
+export const url = __filename
+  .split('src')[1]
+  .replace(/\\/g, '/')
+  .replace('.tsx', '');
+
 export default Base64StringEncode;
