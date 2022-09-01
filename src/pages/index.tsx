@@ -6,7 +6,7 @@ import { useState } from 'react';
 import styles from '../styles/Home.module.css';
 import { Card, Elevation } from '@blueprintjs/core';
 
-const Home: NextPage = () => {
+const Home: NextPage<Props> = ({ tools }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -51,8 +51,16 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  const fs = await import('fs/promises');
+  const path = await import('path');
+  const filename = __filename;
+
+  const toolsPath = path.join(path.dirname(filename), 'tools');
+
+  const toolsDir = await fs.readdir(toolsPath);
+
   return {
-    props: {}, // will be passed to the page component as props
+    props: {},
   };
 };
 
