@@ -11,7 +11,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const GlobalStyle = createGlobalStyle<{ colourMode: ColourMode }>`
     ${({ colourMode }) => {
-      if (colourMode == ColourMode.Dark) {
+      if (colourMode === ColourMode.Dark) {
         return `
           html {
             color-scheme: dark;
@@ -26,10 +26,12 @@ function MyApp({ Component, pageProps }: AppProps) {
   `;
 
   return (
-    <ColorModeProvider value={colourMode}>
-      <GlobalStyle colourMode={colourMode} />
-      <Component {...pageProps} />
-    </ColorModeProvider>
+    <div className={colourMode === ColourMode.Dark ? 'bp4-dark' : 'bp4-light'}>
+      <ColorModeProvider value={colourMode}>
+        <GlobalStyle colourMode={colourMode} />
+        <Component {...pageProps} />
+      </ColorModeProvider>
+    </div>
   );
 }
 
