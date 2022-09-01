@@ -8,7 +8,9 @@ const Layout: FunctionComponent<{
   return (
     <>
       <nav className={styles.navigation}>
-        <Link href="/">The Developer&apos;s Best Friend</Link>
+        <Link href="/">
+          <h1 className={styles.title}>The Developer&apos;s Best Friend</h1>
+        </Link>
       </nav>
       <div className={styles.navPlaceholder}></div>
       <main className={styles.layout}>
