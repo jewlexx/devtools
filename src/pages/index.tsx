@@ -59,8 +59,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const toolsDir = await fs.readdir(toolsPath);
 
+  const toolsImports = await Promise.all(
+    toolsDir.map((p) => {
+      return import(p) as Promise<Props>;
+    }),
+  );
+
   return {
-    props: {},
+    props: toolsImports,
   };
 };
 
