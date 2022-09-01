@@ -1,21 +1,7 @@
-.container {
-  padding: 0 2rem;
-}
-
 .pageLink {
   transition: all 0.3s ease;
 
   &:hover {
     scale: 1.1;
   }
-}
-
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }

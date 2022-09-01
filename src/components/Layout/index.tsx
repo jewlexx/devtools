@@ -11,9 +11,9 @@ const Layout: FunctionComponent<{
         <Link href="/">The Developer&apos;s Best Friend</Link>
       </nav>
       <div className={styles.navPlaceholder}></div>
-      <div className={styles.layout}>
+      <main className={styles.layout}>
         <main className={styles.container}>{children}</main>
-      </div>
+      </main>
     </>
   );
 };
