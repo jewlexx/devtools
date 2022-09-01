@@ -2,9 +2,13 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useState } from 'react';
 import styles from '../styles/Home.module.css';
+import { Card, Elevation } from '@blueprintjs/core';
 
 const Home: NextPage = () => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,7 +18,13 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Link href="/tools/base64-string-encode">Base64 String Encode</Link>
+        <Card
+          elevation={isHovered ? Elevation.TWO : Elevation.ZERO}
+          onMouseOver={() => setIsHovered(true)}
+          onMouseOut={() => setIsHovered(false)}
+        >
+          <Link href="/tools/base64-string-encode">Base64 String Encode</Link>
+        </Card>
       </main>
 
       <footer className={styles.footer}>
