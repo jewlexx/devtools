@@ -8,3 +8,20 @@
 .layout {
   min-height: 100vh;
 }
+
+.navigation {
+  margin-top: 2rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.navPlaceholder {
+  margin-top: 2rem;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
