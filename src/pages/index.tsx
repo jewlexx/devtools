@@ -50,7 +50,7 @@ interface Props {
   }[];
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
   const fs = await import('fs/promises');
   const path = await import('path');
   const filename = __filename;
@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   );
 
   return {
-    props: toolsImports,
+    props: { tools: toolsIMports },
   };
 };
 
