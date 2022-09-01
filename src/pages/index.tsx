@@ -72,6 +72,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
     }),
   );
 
+  toolsImports.forEach((t) => console.log(t.url));
+
   return {
     props: { tools: toolsImports },
   };
