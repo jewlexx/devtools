@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useState } from 'react';
-import styles from '../styles/Home.module.css';
+import styles from '../styles/Home.module.scss';
 import { Card, Elevation } from '@blueprintjs/core';
 
 const Home: NextPage<Props> = ({ tools }) => {
@@ -21,9 +21,10 @@ const Home: NextPage<Props> = ({ tools }) => {
         {tools.map((tool, i) => (
           <Link href={tool.url} key={JSON.stringify({ ...tool, i })}>
             <Card
-              elevation={isHovered === i ? Elevation.TWO : Elevation.ZERO}
+              elevation={isHovered === i ? Elevation.FOUR : Elevation.ZERO}
               onMouseOver={() => setIsHovered(i)}
               onMouseOut={() => setIsHovered(-1)}
+              className={styles.pageLink}
             >
               Base64 String Encode
             </Card>

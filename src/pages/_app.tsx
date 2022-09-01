@@ -4,7 +4,7 @@ import { ColorModeProvider } from '../context/colourMode';
 import useColourMode, { ColourMode } from '../hooks/useColourMode';
 import '@blueprintjs/core/lib/css/blueprint.css';
 import 'normalize.css/normalize.css';
-import '../styles/globals.css';
+import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const colourMode = useColourMode();
@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           }
           body {
             color: white;
-            background: black;
+            background: #212121;
           }
         `;
       }
