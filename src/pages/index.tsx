@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
   );
 
   return {
-    props: { tools: toolsIMports },
+    props: { tools: toolsImports },
   };
 };
 
