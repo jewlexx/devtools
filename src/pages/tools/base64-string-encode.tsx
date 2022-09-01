@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { InputGroup } from '@blueprintjs/core';
 import Layout from '../../components/Layout';
-import useTauri from '../../lib/useTauri';
+import useTauri from '../../hooks/useTauri';
 
 const Base64StringEncode: NextPage = () => {
   const [input, setInput] = useState('');

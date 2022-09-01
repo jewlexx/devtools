@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react';
 
-export enum ColorMode {
+export enum ColourMode {
   Dark,
   Light,
 }
 
 const useColourMode = () => {
-  const [colourMode, setColourMode] = useState<ColorMode>(ColorMode.Dark);
+  const [colourMode, setColourMode] = useState<ColourMode>(ColourMode.Dark);
 
   useEffect(() => {
     if (!window.matchMedia) {
-      setColourMode(ColorMode.Light);
+      setColourMode(ColourMode.Light);
       return;
     }
 
     const updateColor = () => {
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setColourMode(ColorMode.Dark);
+        setColourMode(ColourMode.Dark);
       } else {
-        setColourMode(ColorMode.Light);
+        setColourMode(ColourMode.Light);
       }
     };
 
