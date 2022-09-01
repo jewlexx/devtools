@@ -6,13 +6,15 @@ const Layout: FunctionComponent<{
   children: ReactNode;
 }> = ({ children }) => {
   return (
-    <div className={styles.layout}>
+    <>
       <nav className={styles.navigation}>
         <button> HEHEHEHEHE </button>
       </nav>
       <div className={styles.navPlaceholder}></div>
-      <main className={styles.container}>{children}</main>
-    </div>
+      <div className={styles.layout}>
+        <main className={styles.container}>{children}</main>
+      </div>
+    </>
   );
 };
 
