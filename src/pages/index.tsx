@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import Link from 'next/link';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -41,6 +41,19 @@ const Home: NextPage = () => {
       </footer>
     </div>
   );
+};
+
+interface Props {
+  tools: {
+    title: string;
+    description: string;
+  }[];
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
 };
 
 export default Home;

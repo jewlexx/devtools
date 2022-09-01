@@ -29,8 +29,8 @@ const Base64StringEncode: NextPage = () => {
   );
 };
 
-export const Title = 'Base64 String Encode';
+export const title = 'Base64 String Encode';
 
-export const Description = 'Encode a string in base64';
+export const description = 'Encode a string in base64';
 
 export default Base64StringEncode;
