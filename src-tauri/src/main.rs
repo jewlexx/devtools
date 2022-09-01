@@ -5,6 +5,7 @@
 
 use parking_lot::Mutex;
 
+#[derive(Debug, Copy, Clone)]
 enum ColorModeTypes {
     Dark,
     Light,
@@ -19,6 +20,7 @@ impl From<dark_light::Mode> for ColorModeTypes {
     }
 }
 
+#[derive(Debug, Copy, Clone)]
 struct ColorMode(pub ColorModeTypes);
 
 static COLOR_MODE: Mutex<ColorMode> = Mutex::new(ColorMode(ColorModeTypes::Dark));
