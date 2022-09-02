@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@blueprintjs/core": "^4.9.3",
+    "@swc/wasm-web": "^1.2.246",
     "@tauri-apps/api": "^1.0.2",
     "next": "12.2.5",
     "normalize.css": "^8.0.1",
