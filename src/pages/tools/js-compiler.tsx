@@ -7,5 +7,6 @@ const JsCompiler: NextPage = () => {
 
 export const title = 'Js Compiler';
 export const description = 'Compile javascript';
+export const url = '/tools/js-compiler';
 
 export default JsCompiler;
